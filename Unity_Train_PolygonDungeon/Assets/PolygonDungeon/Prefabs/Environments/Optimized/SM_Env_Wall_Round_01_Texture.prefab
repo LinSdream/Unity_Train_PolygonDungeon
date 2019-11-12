@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 485060}
   - component: {fileID: 3350264}
   - component: {fileID: 2359984}
+  - component: {fileID: 1524870603889101659}
   m_Layer: 0
   m_Name: SM_Env_Wall_Round_01_Texture
   m_TagString: Untagged
@@ -78,3 +79,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!136 &1524870603889101659
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144260}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.5309525
+  m_Height: 9.94022
+  m_Direction: 1
+  m_Center: {x: 0.00000023841858, y: 2.4140663, z: 0}
