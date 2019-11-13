@@ -12,7 +12,7 @@ namespace Game
         public float Gravity = 9.8f;//重力
         public GameObject PlayerModel;//玩家模型
         public float MovementSpeed = 3f;//前进速度
-        public float HorizontalSpeed = 1f;//水平线上速度
+        public float BackSpeed = 1f;
         public float JumpSpeed = 10f;//垂直移动速度
         public float RotationSpeed = 100f;//旋转速度
         #endregion
@@ -24,9 +24,11 @@ namespace Game
         private bool _stop;//是否停止运动
         #endregion
 
+        #region MonoBehavior Callbacks
         private void Start()
         {
             _playerController = GetComponent<CharacterController>();
+            _anim = PlayerModel.GetComponent<Animator>();
         }
 
         private void Update()
@@ -35,22 +37,37 @@ namespace Game
             Rotate();
         }
 
+        #endregion
+
+        #region Private Methods
         /// <summary>
         /// z轴移动，
         /// </summary>
         void Move()
         {
             float v = Input.GetAxis("Vertical");
-            
+            if (v == 0)
+            {
+                _anim.SetBool("MoveBack", false);
+                _anim.SetBool("MoveForward", false);
+            }
+
             if (_playerController.isGrounded)
             {
                 _moveDirection = new Vector3(0, 0, v);
-                _moveDirection = transform.TransformDirection(_moveDirection*MovementSpeed);
-
+                if(v > 0)
+                {
+                    _anim.SetBool("MoveForward", true);
+                    _moveDirection = transform.TransformDirection(_moveDirection*MovementSpeed);
+                }else if (v < 0)
+                {
+                    _anim.SetBool("MoveBack", true);
+                    _moveDirection = transform.TransformDirection(_moveDirection * BackSpeed);
+                }
             }
-
             _moveDirection.y -= Gravity * Time.deltaTime;
             _playerController.Move(_moveDirection * Time.deltaTime);
+
         }
 
         //旋转
@@ -63,6 +80,8 @@ namespace Game
             transform.rotation = Quaternion.Lerp(this.transform.rotation, targetRotation, Time.deltaTime * RotationSpeed);
 
         }
+
+        #endregion
     }
 
 }
