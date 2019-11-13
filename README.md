@@ -10,7 +10,8 @@ Unity练手项目 多边形地牢风格的rpg
   - Assets
     - Others
       - Mixamo Fbx:&ensp;&ensp;mixamo网站下载的动作
-    - PolygonDungeon：&ensp;&ensp;资源包
+      - PolygonDungeon：&ensp;&ensp;资源包
+      - UnityPackage：JsonNet库
     - Scenes:&ensp;&ensp;场景
     - Scripts：&ensp;&ensp;脚本
 
