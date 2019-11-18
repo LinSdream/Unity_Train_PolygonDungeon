@@ -10,20 +10,32 @@ namespace Game
 
         #region Public Fields
         public CharacterAttribute BaseAtribute;
-        
+        public GameObject PlayerModel;//玩家模型
+        public AttackBase AttackModel;
+
         [HideInInspector]public float HP;
         [HideInInspector] public float MP;
-        [HideInInspector] public float AttackValue;
+        [HideInInspector] public float ATK;
         [HideInInspector] public float DefenceValue;
         [HideInInspector] public float MoveSpeedValue;
+        [HideInInspector] public Animator Anim {
+            get
+            {
+                return _anim;
+            }
+        }
         #endregion
 
+        #region Protected Fields
+        protected Animator _anim;
+        protected CharacterController _playerController;//玩家控制器
+        #endregion 
         #region MonoBehaviour Callbacks
         private void Awake()
         {
             HP = BaseAtribute.Health;
             MP = BaseAtribute.Magic;
-            AttackValue = BaseAtribute.Attack;
+            ATK = BaseAtribute.Attack;
             DefenceValue = BaseAtribute.Defence;
             MoveSpeedValue = BaseAtribute.MoveSpeed;
 
@@ -32,13 +44,11 @@ namespace Game
 
         protected virtual void Start()
         {
-
+            _playerController = GetComponent<CharacterController>();
+            _anim = PlayerModel.GetComponent<Animator>();
+            AttackModel.ChangeAttackAnimationClip(this);
         }
 
-        protected virtual void Update()
-        {
-            
-        }
         #endregion
 
         #region Virtual Methods

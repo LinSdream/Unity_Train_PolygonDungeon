@@ -9,30 +9,29 @@ namespace Game
     {
         #region Public Fileds
         public float Gravity = 9.8f;//重力
-        public GameObject PlayerModel;//玩家模型
+        
         public float BackSpeed = 1f;
         public float JumpSpeed = 10f;//垂直移动速度
         public float RotationSpeed = 100f;//旋转速度
         #endregion
 
         #region Private Fileds
-        private CharacterController _playerController;//玩家控制器
         private Vector3 _moveDirection;//移动方向
-        private Animator _anim;//PlayerModel上的Animator
+        
         private bool _stop;//是否停止运动
         #endregion
 
         #region MonoBehavior Callbacks
         protected override void Start()
         {
-            _playerController = GetComponent<CharacterController>();
-            _anim = PlayerModel.GetComponent<Animator>();
+            base.Start();
         }
 
-        protected override void Update()
+        void Update()
         {
             Move();
             Rotate();
+            Attack();
         }
 
         #endregion
@@ -85,7 +84,10 @@ namespace Game
         #region Override Methods
         public override void Attack()
         {
-            
+            if (Input.GetMouseButton(0))
+            {
+                _anim.SetTrigger("Attack");
+            }
         }
         #endregion
     }
