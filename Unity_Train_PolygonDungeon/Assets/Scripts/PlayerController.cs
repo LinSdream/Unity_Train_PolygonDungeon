@@ -5,13 +5,11 @@ using UnityEngine;
 namespace Game
 {
     [RequireComponent(typeof(CharacterController))]
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : CharacterBase
     {
-
         #region Public Fileds
         public float Gravity = 9.8f;//重力
         public GameObject PlayerModel;//玩家模型
-        public float MovementSpeed = 3f;//前进速度
         public float BackSpeed = 1f;
         public float JumpSpeed = 10f;//垂直移动速度
         public float RotationSpeed = 100f;//旋转速度
@@ -25,13 +23,13 @@ namespace Game
         #endregion
 
         #region MonoBehavior Callbacks
-        private void Start()
+        protected override void Start()
         {
             _playerController = GetComponent<CharacterController>();
             _anim = PlayerModel.GetComponent<Animator>();
         }
 
-        private void Update()
+        protected override void Update()
         {
             Move();
             Rotate();
@@ -55,11 +53,12 @@ namespace Game
             if (_playerController.isGrounded)
             {
                 _moveDirection = new Vector3(0, 0, v);
-                if(v > 0)
+                if (v > 0)
                 {
                     _anim.SetBool("MoveForward", true);
-                    _moveDirection = transform.TransformDirection(_moveDirection*MovementSpeed);
-                }else if (v < 0)
+                    _moveDirection = transform.TransformDirection(_moveDirection * MoveSpeedValue);
+                }
+                else if (v < 0)
                 {
                     _anim.SetBool("MoveBack", true);
                     _moveDirection = transform.TransformDirection(_moveDirection * BackSpeed);
@@ -82,6 +81,14 @@ namespace Game
         }
 
         #endregion
+
+        #region Override Methods
+        public override void Attack()
+        {
+            
+        }
+        #endregion
     }
 
 }
+
