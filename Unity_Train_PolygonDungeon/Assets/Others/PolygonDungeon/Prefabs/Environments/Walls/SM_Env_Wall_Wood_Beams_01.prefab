@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 3399648}
   - component: {fileID: 2371826}
   - component: {fileID: -1594324018968900433}
+  - component: {fileID: 1628613493265757856}
+  - component: {fileID: 8837043582761816637}
   m_Layer: 0
   m_Name: SM_Env_Wall_Wood_Beams_01
   m_TagString: Untagged
@@ -55,6 +57,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -90,5 +93,31 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5, y: 5, z: 0.41843206}
-  m_Center: {x: -2.5, y: 2.5, z: 0.20921603}
+  m_Size: {x: 5, y: 1.2981739, z: 0.41843206}
+  m_Center: {x: -2.5, y: 4.350913, z: 0.20921603}
+--- !u!65 &1628613493265757856
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122580}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.31496906, y: 3.714179, z: 0.41843206}
+  m_Center: {x: -4.8425155, y: 1.8570895, z: 0.20921603}
+--- !u!65 &8837043582761816637
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122580}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.23276234, y: 3.722796, z: 0.41843206}
+  m_Center: {x: -0.11638117, y: 1.861398, z: 0.20921603}
