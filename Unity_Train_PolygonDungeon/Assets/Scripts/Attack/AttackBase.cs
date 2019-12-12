@@ -8,6 +8,7 @@ namespace Game
     public class AttackBase : ScriptableObject
     {
         public AnimationClip AttackClip;
+        public Transform Pos;
 
         AnimatorOverrideController _animOverrideController;
 
@@ -16,7 +17,7 @@ namespace Game
         {
             _animOverrideController = new AnimatorOverrideController(cb.Anim.runtimeAnimatorController);
             cb.Anim.runtimeAnimatorController = _animOverrideController;
-            _animOverrideController["mixamo.com"] = AttackClip;
+            _animOverrideController["Smash"] = AttackClip;
         }
 
     }

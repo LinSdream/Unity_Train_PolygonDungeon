@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d16d94fbe88d00d4d8fc609bc8e2ee0d, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: 
-  AttackClip: {fileID: -203655887218126122, guid: 3311cc5a650bb3b418989c8a9d3cfd36,
+  AttackClip: {fileID: 1827226128182048838, guid: 3311cc5a650bb3b418989c8a9d3cfd36,
     type: 3}

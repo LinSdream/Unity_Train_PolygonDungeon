@@ -13,6 +13,9 @@ namespace Game
         public GameObject PlayerModel;//玩家模型
         public AttackBase AttackModel;
 
+        [Header("运动参数")]
+        public float Gravity = 9.8f;//重力
+
         [HideInInspector]public float HP;
         [HideInInspector] public float MP;
         [HideInInspector] public float ATK;
@@ -29,6 +32,7 @@ namespace Game
         #region Protected Fields
         protected Animator _anim;
         protected CharacterController _playerController;//玩家控制器
+        protected Vector3 _moveDirection = Vector3.zero;//移动方向
         #endregion 
         #region MonoBehaviour Callbacks
         private void Awake()
@@ -40,6 +44,12 @@ namespace Game
             MoveSpeedValue = BaseAtribute.MoveSpeed;
 
             Init();
+        }
+
+        protected virtual void Update()
+        {
+            _moveDirection.y -= Gravity * Time.deltaTime;
+            OnUpdate();
         }
 
         protected virtual void Start()
@@ -57,6 +67,8 @@ namespace Game
 
         /// <summary> Attack方法 </summary>
         public virtual void Attack() { }
+
+        protected virtual void OnUpdate() { }
         #endregion
 
     }
